@@ -266,7 +266,7 @@ Estimated Security Costs
 
 Item                                 Cost  
 
-UniFi Security Upgrades   $2,000 
+UniFi Security Upgrades       $2,000 
  Microsoft Sentinel            $2,500 
 Backup Storage                $1,500
  Security Consultant         $4,000 
@@ -304,13 +304,13 @@ Phase 3 – Monitoring and Visibility
 
 19. Success Metrics
 
-Metric                                        Target          
+Metric                                       Target          
 Permanent local admin accounts  0                
-MFA coverage                             100%             
-Guest Wi-Fi isolation                  Complete         
-Mean Time to Detect (MTTD)     Under 15 minutes 
-AWS S3 logging visibility       Enabled         
-PCI-DSS audit readiness        Achieved         
+MFA coverage                            100%             
+Guest Wi-Fi isolation                   Complete         
+Mean Time to Detect (MTTD)              Under 15 minutes 
+AWS S3 logging visibility               Enabled         
+PCI-DSS audit readiness                 Achieved         
 
 20. Expected Business Outcomes
 
