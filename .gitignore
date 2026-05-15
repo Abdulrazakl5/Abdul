@@ -1,0 +1,65 @@
+# Sensitive Files
+*.key
+*.pem
+*.pfx
+*.p12
+*.jks
+*.keystore
+
+# Credentials
+.env
+.env.local
+.env.*.local
+config/credentials
+secrets/
+
+# Configuration with sensitive data
+config/sensitive-*.json
+config/credentials-*.yml
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+
+# Backups
+*.bak
+*.backup
+*.tmp
+
+# Build output
+build/
+dist/
+node_modules/
+.gradle/
+target/
+
+# Package manager
+package-lock.json
+yarn.lock
+gemfile.lock
+
+# Test coverage
+coverage/
+.coverage
+
+# Dependencies
+venv/
+env/
