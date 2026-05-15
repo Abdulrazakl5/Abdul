@@ -98,18 +98,6 @@ VLAN10 Staff  VLAN20 QuickBooks Allow approved ports
 VLAN30 Guest  Internal VLANs    Deny                 
  VLAN40 IoT     Internal Network    Deny                 
 VPN Users     VLAN10 Only          Allow with MFA       
-Firewall Rule Example
-
-```json id="fw01"
-{
-  "rule_name": "Restrict_QB_Access",
-  "source_network": "VLAN10_STAFF",
-  "destination_ip": "10.0.20.5",
-  "ports": ["8019", "55368"],
-  "action": "allow",
-  "description": "Allow only staff VLAN access to QuickBooks Database"
-}
-
 
  7. Identity and Access Management (IAM)
 
