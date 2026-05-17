@@ -17,6 +17,14 @@ app.use((req, res, next) => {
   next();
 });
 
+// Home Page
+app.get('/', (req, res) => {
+  res.status(200).render('index', {
+    title: 'VeloPay Cybersecurity Plan',
+    status: 'operational'
+  });
+});
+
 // Health Check Endpoint
 app.get('/health', (req, res) => {
   res.status(200).json({
@@ -32,7 +40,7 @@ app.get('/status', (req, res) => {
   res.status(200).json({
     status: 'operational',
     code: 200,
-    service: 'Abdul Cybersecurity Plan',
+    service: 'VeloPay Cybersecurity Plan',
     uptime: process.uptime(),
     timestamp: new Date().toISOString()
   });
@@ -45,18 +53,12 @@ app.get('/api/test', (req, res) => {
     code: 200,
     message: 'API working correctly',
     data: {
-      project: 'VeloPay Cybersecurity Plan',
+      project: 'VeloPay Cybersecurity Implementation Plan',
       version: '1.0.0',
-      description: 'Comprehensive cybersecurity implementation plan for VeloPay Solutions'
+      company: 'VeloPay Solutions',
+      employees: 45,
+      focus: 'FinTech Payment Processing'
     }
-  });
-});
-
-// Home Page
-app.get('/', (req, res) => {
-  res.status(200).render('index', {
-    title: 'VeloPay Cybersecurity Plan',
-    status: 'operational'
   });
 });
 
@@ -75,7 +77,7 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(200).json({
     code: 200,
-    message: 'Error handled',
+    message: 'Error handled gracefully',
     error: err.message
   });
 });
@@ -83,9 +85,7 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`✅ Server running on port ${PORT}`);
-  console.log(`✅ Health check: GET /health`);
-  console.log(`✅ Status: GET /status`);
-  console.log(`✅ API Test: GET /api/test`);
+  console.log(`✅ VeloPay Cybersecurity Plan - Live and operational`);
 });
 
 module.exports = app;
