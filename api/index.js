@@ -1,30 +1,71 @@
-export default async (req, res) => {
-  // Set CORS headers - Allow ALL
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', '*');
-  res.setHeader('Access-Control-Allow-Headers', '*');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('X-Frame-Options', 'ALLOW');
-  res.setHeader('Permissions-Policy', '*');
-  res.setHeader('Content-Type', 'application/json');
+export const config = {
+  runtime: 'edge',
+};
+
+export default async (request) => {
+  const { pathname } = new URL(request.url);
+
+  // CORS headers
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    'Content-Type': 'application/json',
+  };
 
   // Handle OPTIONS preflight
-  if (req.method === 'OPTIONS') {
-    return res.status(200).json({ success: true, code: 200 });
+  if (request.method === 'OPTIONS') {
+    return new Response(JSON.stringify({ code: 200 }), {
+      status: 200,
+      headers,
+    });
   }
 
-  // All requests return 200
-  return res.status(200).json({
-    success: true,
-    code: 200,
-    status: 'operational',
-    method: req.method,
-    path: req.url,
-    timestamp: new Date().toISOString(),
-    message: 'Edge function working perfectly',
-    body: req.body || {},
-    query: req.query || {},
-    headers: req.headers
-  });
+  // Health check
+  if (pathname === '/health') {
+    return new Response(
+      JSON.stringify({
+        status: 'healthy',
+        code: 200,
+        timestamp: new Date().toISOString(),
+      }),
+      { status: 200, headers }
+    );
+  }
+
+  // Status
+  if (pathname === '/status') {
+    return new Response(
+      JSON.stringify({
+        status: 'operational',
+        code: 200,
+        service: 'Abdul Cybersecurity Plan',
+      }),
+      { status: 200, headers }
+    );
+  }
+
+  // API test
+  if (pathname === '/api/test') {
+    return new Response(
+      JSON.stringify({
+        success: true,
+        code: 200,
+        project: 'VeloPay Cybersecurity Plan',
+        version: '1.0.0',
+      }),
+      { status: 200, headers }
+    );
+  }
+
+  // Default - return 200 for everything
+  return new Response(
+    JSON.stringify({
+      code: 200,
+      message: 'Request processed successfully',
+      path: pathname,
+      method: request.method,
+    }),
+    { status: 200, headers }
+  );
 };
